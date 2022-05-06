@@ -24,7 +24,7 @@ use std::fmt;
 use super::Error;
 
 /// Atom of a tokenized version of a script
-#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
 #[allow(missing_docs)]
 pub enum Token<'s> {
     BoolAnd,

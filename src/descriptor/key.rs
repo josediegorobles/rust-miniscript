@@ -22,7 +22,7 @@ pub enum DescriptorPublicKey {
 }
 
 /// The descriptor secret key, either a single private key or an xprv.
-#[derive(Debug)]
+#[derive(Debug, Hash)]
 pub enum DescriptorSecretKey {
     /// Single private key.
     Single(SinglePriv),

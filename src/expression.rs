@@ -37,6 +37,7 @@ pub trait FromTree: Sized {
     fn from_tree(top: &Tree) -> Result<Self, Error>;
 }
 
+#[derive(Hash)]
 enum Found {
     Nothing,
     LBracket(usize), // Either a left ( or {

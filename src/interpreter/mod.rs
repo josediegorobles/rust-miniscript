@@ -59,7 +59,7 @@ pub struct Interpreter<'txin> {
 // Ecdsa and Schnorr signatures
 
 /// A type for representing signatures supported as of bitcoin core 22.0
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum KeySigPair {
     /// A Full public key and corresponding Ecdsa signature
     Ecdsa(bitcoin::PublicKey, bitcoin::EcdsaSig),
@@ -451,7 +451,7 @@ impl<'txin> Interpreter<'txin> {
 }
 
 /// Type of HashLock used for SatisfiedConstraint structure
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]
 pub enum HashLockType {
     ///SHA 256 hashlock
     Sha256(sha256::Hash),
@@ -466,7 +466,7 @@ pub enum HashLockType {
 /// A satisfied Miniscript condition (Signature, Hashlock, Timelock)
 /// 'intp represents the lifetime of descriptor and `stack represents
 /// the lifetime of witness
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]
 pub enum SatisfiedConstraint {
     ///Public key and corresponding signature
     PublicKey {
