@@ -97,7 +97,7 @@ impl hash::Hash for OrdF64 {
 
 /// Compilation key: This represents the state of the best possible compilation
 /// of a given policy(implicitly keyed).
-#[derive(Copy, Clone, PartialEq, Eq, Debug, PartialOrd, Ord)]
+#[derive(Copy, Clone, PartialEq, Eq, Debug, PartialOrd, Ord, Hash)]
 struct CompilationKey {
     /// The type of the compilation result
     ty: Type,
@@ -134,7 +134,7 @@ impl CompilationKey {
     }
 }
 
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, Hash)]
 struct CompilerExtData {
     /// If this node is the direct child of a disjunction, this field must
     /// have the probability of its branch being taken. Otherwise it is ignored.
@@ -431,7 +431,7 @@ impl Property for CompilerExtData {
 }
 
 /// Miniscript AST fragment with additional data needed by the compiler
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Hash)]
 struct AstElemExt<Pk: MiniscriptKey, Ctx: ScriptContext> {
     /// The actual Miniscript fragment with type information
     ms: Arc<Miniscript<Pk, Ctx>>,
@@ -519,7 +519,7 @@ impl<Pk: MiniscriptKey, Ctx: ScriptContext> AstElemExt<Pk, Ctx> {
 }
 
 /// Different types of casts possible for each node.
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Hash)]
 struct Cast<Pk: MiniscriptKey, Ctx: ScriptContext> {
     node: fn(Arc<Miniscript<Pk, Ctx>>) -> Terminal<Pk, Ctx>,
     ast_type: fn(types::Type) -> Result<types::Type, ErrorKind>,

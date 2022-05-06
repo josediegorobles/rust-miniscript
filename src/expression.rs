@@ -22,7 +22,7 @@ use crate::Error;
 
 use crate::MAX_RECURSION_DEPTH;
 
-#[derive(Debug)]
+#[derive(Debug, Hash)]
 /// A token of the form `x(...)` or `x`
 pub struct Tree<'a> {
     /// The name `x`

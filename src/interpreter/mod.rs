@@ -44,6 +44,7 @@ use self::error::PkEvalErrInner;
 use self::stack::Stack;
 
 /// An iterable Miniscript-structured representation of the spending of a coin
+#[derive(Hash)]
 pub struct Interpreter<'txin> {
     inner: inner::Inner,
     stack: Stack<'txin>,
@@ -504,6 +505,7 @@ pub enum SatisfiedConstraint {
 ///the top of the stack, we need to decide whether to execute right child or not.
 ///This is also useful for wrappers and thresholds which push a value on the stack
 ///depending on evaluation of the children.
+#[derive(Hash)]
 struct NodeEvaluationState<'intp> {
     ///The node which is being evaluated
     node: &'intp Miniscript<BitcoinKey, NoChecks>,

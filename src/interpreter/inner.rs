@@ -68,7 +68,7 @@ fn script_from_stackelem<'a, Ctx: ScriptContext>(
 }
 
 /// Helper type to indicate the origin of the bare pubkey that the interpereter uses
-#[derive(Copy, Clone, PartialEq, Eq, Debug)]
+#[derive(Copy, Clone, PartialEq, Eq, Debug, Hash)]
 pub enum PubkeyType {
     Pk,
     Pkh,
@@ -78,7 +78,7 @@ pub enum PubkeyType {
 }
 
 /// Helper type to indicate the origin of the bare miniscript that the interpereter uses
-#[derive(Copy, Clone, PartialEq, Eq, Debug)]
+#[derive(Copy, Clone, PartialEq, Eq, Debug, Hash)]
 pub enum ScriptType {
     Bare,
     Sh,
@@ -88,7 +88,7 @@ pub enum ScriptType {
 }
 
 /// Structure representing a script under evaluation as a Miniscript
-#[derive(Clone, PartialEq, Eq, Debug)]
+#[derive(Clone, PartialEq, Eq, Debug, Hash)]
 pub(super) enum Inner {
     /// The script being evaluated is a simple public key check (pay-to-pk,
     /// pay-to-pkhash or pay-to-witness-pkhash)
